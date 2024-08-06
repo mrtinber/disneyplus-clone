@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DisneyLogo from "../assets/images/viewers-disney.png";
 import MarvelLogo from "../assets/images/viewers-marvel.png";
 import NationalGeographicLogo from "../assets/images/viewers-national.png";
@@ -17,37 +18,43 @@ export const Categories = () => {
             logo: DisneyLogo,
             video: DisneyVideo,
             alt: "Logo Disney",
+            companyId: 2,
         },
         {
             id: 2,
             logo: MarvelLogo,
             video: MarvelVideo,
             alt: "Logo Marvel",
+            companyId: 420,
         },
         {
             id: 3,
             logo: NationalGeographicLogo,
             video: NationalGeographicVideo,
             alt: "Logo National Geographic",
+            companyId: 7521,
         },
         {
             id: 4,
             logo: PixarLogo,
             video: PixarVideo,
             alt: "Logo Pixar",
+            companyId: 3,
         },
         {
             id: 5,
             logo: StarWarsLogo,
             video: StarWarsVideo,
             alt: "Logo Star Wars",
+            companyId: 1,
         },
     ];
 
     return (
         <div className="flex items-center gap-5 px-5 md:px-16 p-2 bg-transparent">
             {CategoryList.map((item) => (
-                <div
+                <Link
+                    to={`studio/${item.companyId}`}
                     key={item.id}
                     className=" relative bg-gradient-to-b from-transparent to-[#171724] border-2 border-gray-200 rounded-md cursor-pointer hover:scale-110 transition-all shadow-xl shadow-black"
                 >
@@ -64,7 +71,7 @@ export const Categories = () => {
                         alt={item.alt}
                         className="w-full z-10"
                     />
-                </div>
+                </Link>
             ))}
         </div>
     );

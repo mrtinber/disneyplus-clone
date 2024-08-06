@@ -7,6 +7,7 @@ import { HiDotsVertical, HiHome } from "react-icons/hi";
 import { CgSearch } from "react-icons/cg";
 import { NavItem } from "./NavItem";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const menu = [
     {
@@ -46,7 +47,9 @@ export const Header = () => {
         <>
             <div className="flex items-center justify-between p-4 bg-gradient-to-b from-black to-transparent z-[3000] fixed w-full">
                 <div className="flex items-center gap-4">
-                    <DisneyPlusLogo height={40} />
+                    <Link to={''}>
+                        <DisneyPlusLogo height={40} />
+                    </Link>
                     <div className="items-center gap-6 hidden lg:flex">
                         {menu.map((item) => (
                             <NavItem
@@ -66,7 +69,7 @@ export const Header = () => {
                                     <div className="relative group">
                                         <NavItem
                                             key={item.name}
-                                            name={''}
+                                            name={""}
                                             Icon={item.icon}
                                         />
                                         <span className="absolute -bottom-0 left-1 w-0 h-[2px] bg-white group-hover:w-[50%] transition-all duration-500 mt-8"></span>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { getVideos, PICTURE_BASE_URL } from "../services/ApiCall";
+import { getTrends, PICTURE_BASE_URL } from "../services/ApiCall";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Movie } from "./types/Movie";
 
@@ -48,7 +48,7 @@ export const Slider = () => {
 
     const getMovies = async () => {
         try {
-            const data = await getVideos();
+            const data = await getTrends();
             setMovieList(data.results);
         } catch (error) {
             console.error("Failed to fetch movies", error);
