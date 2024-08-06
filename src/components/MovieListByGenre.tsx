@@ -35,7 +35,6 @@ export const MovieListByGenre = ({
     const fetchMovies = async () => {
         try {
             const data = await getMoviesByGenre(genreId);
-            console.log("bygenre", data);
             setMovieList(data.results);
         } catch (error) {
             console.error("Failed to fetch movies", error);

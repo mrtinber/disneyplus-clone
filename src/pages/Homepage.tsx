@@ -4,10 +4,10 @@ import { Slider } from "../components/Slider";
 
 export const Homepage = () => {
     return (
-        <>
+        <div className="py-16">
             <Slider />
             <Categories />
             <MovieGenresList />
-        </>
+        </div>
     );
 };
