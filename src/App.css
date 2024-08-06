@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Graphik';
+  src: url('./assets/fonts/GraphikRegular.otf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('./assets/fonts/GraphikBold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('./assets/fonts/GraphikMedium.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('./assets/fonts/GraphikLight.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    /* background-color: #06090f; */
+    /* background-color: #292C36; */
+    /* background-color: #171724; */
+    background: linear-gradient(to bottom, #292c36 0%, #171724 50%);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

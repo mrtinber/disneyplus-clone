@@ -1,0 +1,26 @@
+export const MOVIE_BASE_URL = "https://api.themoviedb.org/3";
+export const PICTURE_BASE_URL = "http://image.tmdb.org/t/p/original";
+export const API_KEY = "fee1a33a20dbcc5e6960ef45c6fe4193";
+
+export const getVideos = async () => {
+    const response = await fetch(
+        `${MOVIE_BASE_URL}/trending/all/day?api_key=${API_KEY}`
+    );
+    if (!response.ok) {
+        throw new Error("Failed to fetch movies");
+    }
+    const data = await response.json();
+    return data;
+};
+
+export const MOVIE_BY_GENRE_URL =
+    "https://api.themoviedb.org/3/discover/movie?api_key=fee1a33a20dbcc5e6960ef45c6fe4193";
+
+export const getMoviesByGenre = async (id: number) => {
+    const response = await fetch(`${MOVIE_BY_GENRE_URL}&with_genres=${id}`);
+    if (!response.ok) {
+        throw new Error("Failed to fetch movies by genre");
+    }
+    const data = await response.json();
+    return data;
+};
