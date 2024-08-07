@@ -6,7 +6,7 @@ import {
     PICTURE_BASE_URL,
 } from "../services/ApiCall";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DisneyIntroVideo from '../assets/videos/disney_intro.mp4';
 import StarWarsIntroVideo from '../assets/videos/starwars_intro.mp4';
 import NationalGeographicIntro from '../assets/videos/national_geographic_intro.mp4';
@@ -133,10 +133,10 @@ export const Studio = () => {
                     src={backdropVideo}
                     className="w-full h-screen object-cover"
                 ></video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent to-10%"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent to-15%"></div>
             </div>
 
-            <div className=" bg-gradient-to-t from-transparent from-75% to-black">
+            <div className=" bg-gradient-to-t from-transparent from-65% to-black">
                 <div className="py-4 px-8 md:px-16">
                     <h2 className="text-white text-lg font-medium">Movies</h2>
                     <div className="relative">
@@ -150,7 +150,7 @@ export const Studio = () => {
                             className="flex overflow-x-auto overflow-visible h-full gap-8 scrollbar-hide scroll-smooth py-4 px-3 z-20"
                         >
                             {movieList.map((item, index) => (
-                                <div key={index} className="shrink-0">
+                                <Link to={`../details/${item.id}`} key={index} className="shrink-0">
                                     <img
                                         className="rounded-lg cursor-pointer w-[110px] md:w-[200px] hover:border-[3px] border-gray-300 hover:scale-110 shadow-lg shadow-black transition-all z-40"
                                         src={`${PICTURE_BASE_URL}${
@@ -160,7 +160,7 @@ export const Studio = () => {
                                         }`}
                                         alt={item.title}
                                     />
-                                </div>
+                                </Link>
                             ))}
                         </div>
                         <IoIosArrowForward
