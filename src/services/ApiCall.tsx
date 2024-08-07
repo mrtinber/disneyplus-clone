@@ -47,3 +47,21 @@ export const getMoviesByCompany = async (companyId: number) => {
     const data = await response.json();
     return data;
 };
+
+export const getMovieDetails = async (id: number) => {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
+    if(!response.ok) {
+        throw new Error("Failed to fetch movie details")
+    }
+    const data = await response.json()
+    return data
+}
+
+export const getSeriesDetails = async (id: number) => {
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`)
+    if(!response.ok) {
+        throw new Error("Failed to fetch series details")
+    }
+    const data = await response.json()
+    return data
+}

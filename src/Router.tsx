@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Homepage } from "./pages/Homepage";
 import { Studio } from "./pages/Studio";
+import { Details } from "./pages/Details";
 
 const Layout = () => (
     <>
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: "studio/:companyId",
                 element: <Studio />,
+            },
+            {
+                path: "details/:id",
+                element: <Details />,
             },
         ],
     },

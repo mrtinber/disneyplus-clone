@@ -56,7 +56,7 @@ export const Categories = () => {
                 <Link
                     to={`studio/${item.companyId}`}
                     key={item.id}
-                    className=" relative bg-gradient-to-b from-transparent to-[#171724] border-2 border-gray-200 rounded-md cursor-pointer hover:scale-110 transition-all shadow-xl shadow-black"
+                    className="relative bg-gradient-to-b from-transparent to-[#171724] border-2 border-gray-200 rounded-md cursor-pointer hover:scale-110 transition-all shadow-xl shadow-black"
                 >
                     <video
                         muted
