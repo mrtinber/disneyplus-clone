@@ -4,7 +4,7 @@ import { Movie } from "./types/Movie";
 
 export const PosterCard: React.FC<{ movie: Movie }> = ({ movie }) => {
     return (
-        <Link to={`details/${movie.id}`} className="shrink-0">
+        <Link to={`movie/details/${movie.id}`} className="shrink-0">
             <img
                 src={`${PICTURE_BASE_URL}${movie.poster_path}`}
                 alt=""

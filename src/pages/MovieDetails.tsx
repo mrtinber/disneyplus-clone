@@ -7,13 +7,15 @@ import { Button } from "../components/Button";
 import { FaPlus } from "react-icons/fa6";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { GoDotFill } from "react-icons/go";
+import { Loader } from "../components/Loader";
 
-export const Details = () => {
+export const MovieDetails = () => {
     const { id } = useParams<{ id: string }>();
     const [details, setDetails] = useState<Movie>();
     const [activeButton, setActiveButton] = useState<
-        "EPISODES" | "SUGGESTED" | "DETAILS"
-    >("EPISODES");
+        "SUGGESTED" | "EXTRAS" | "DETAILS"
+    >("SUGGESTED");
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getDetails();
@@ -21,14 +23,21 @@ export const Details = () => {
 
     const getDetails = async () => {
         if (id) {
+            setIsLoading(true)
             try {
                 const data = await getMovieDetails(parseInt(id));
                 setDetails(data);
             } catch (error) {
                 console.error("Failed to get details from this id");
+            } finally {
+                setIsLoading(false)
             }
         }
     };
+
+    if (isLoading) {
+        return <Loader />
+    }
 
     return (
         <div className="relative">
@@ -82,19 +91,6 @@ export const Details = () => {
                     <div className="flex gap-12 border-b-[3px] border-white/30 pb-1">
                         <button
                             className={`relative transition-all ${
-                                activeButton === "EPISODES"
-                                    ? "text-white"
-                                    : "text-white/30"
-                            }`}
-                            onClick={() => setActiveButton("EPISODES")}
-                        >
-                            EPISODES
-                            {activeButton === "EPISODES" && (
-                                <span className="absolute border-b-white border-b-[3px] bottom-[-6px] left-0 w-full"></span>
-                            )}
-                        </button>
-                        <button
-                            className={`relative transition-all ${
                                 activeButton === "SUGGESTED"
                                     ? "text-white"
                                     : "text-white/30"
@@ -103,6 +99,19 @@ export const Details = () => {
                         >
                             SUGGESTED
                             {activeButton === "SUGGESTED" && (
+                                <span className="absolute border-b-white border-b-[3px] bottom-[-6px] left-0 w-full"></span>
+                            )}
+                        </button>
+                        <button
+                            className={`relative transition-all ${
+                                activeButton === "EXTRAS"
+                                    ? "text-white"
+                                    : "text-white/30"
+                            }`}
+                            onClick={() => setActiveButton("EXTRAS")}
+                        >
+                            EXTRAS
+                            {activeButton === "EXTRAS" && (
                                 <span className="absolute border-b-white border-b-[3px] bottom-[-6px] left-0 w-full"></span>
                             )}
                         </button>

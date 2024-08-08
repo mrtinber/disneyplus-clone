@@ -4,7 +4,7 @@ import { Movie } from "./types/Movie";
 
 export const MovieCard: React.FC<{ movie: Movie }> = ({ movie }) => {
     return (
-        <Link to={`details/${movie.id}`} className="hover:scale-110 transition-all h-44">
+        <Link to={`movie/details/${movie.id}`} className="hover:scale-110 transition-all h-44">
             <img
                 src={`${PICTURE_BASE_URL}${movie.backdrop_path}`}
                 alt=""

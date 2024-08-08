@@ -2,7 +2,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Homepage } from "./pages/Homepage";
 import { Studio } from "./pages/Studio";
-import { Details } from "./pages/Details";
+import { MovieDetails } from "./pages/MovieDetails";
+import { SeriesDetails } from "./pages/SeriesDetails";
 
 const Layout = () => (
     <>
@@ -28,8 +29,12 @@ const router = createBrowserRouter([
                 element: <Studio />,
             },
             {
-                path: "details/:id",
-                element: <Details />,
+                path: "movie/details/:id",
+                element: <MovieDetails />,
+            },
+            {
+                path: "tv/details/:id",
+                element: <SeriesDetails />,
             },
         ],
     },

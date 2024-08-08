@@ -66,7 +66,7 @@ export const Header = () => {
                         {menu.map(
                             (item, index) =>
                                 index < 3 && (
-                                    <div className="relative group">
+                                    <div key={index} className="relative group">
                                         <NavItem
                                             key={item.name}
                                             name={""}

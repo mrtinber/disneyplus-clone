@@ -7,11 +7,12 @@ import {
 } from "../services/ApiCall";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
-import DisneyIntroVideo from '../assets/videos/disney_intro.mp4';
-import StarWarsIntroVideo from '../assets/videos/starwars_intro.mp4';
-import NationalGeographicIntro from '../assets/videos/national_geographic_intro.mp4';
-import PixarIntroVideo from '../assets/videos/pixar_intro.mp4';
-import MarvelIntroVideo from '../assets/videos/marvel_intro.mp4';
+import DisneyIntroVideo from "../assets/videos/disney_intro.mp4";
+import StarWarsIntroVideo from "../assets/videos/starwars_intro.mp4";
+import NationalGeographicIntro from "../assets/videos/national_geographic_intro.mp4";
+import PixarIntroVideo from "../assets/videos/pixar_intro.mp4";
+import MarvelIntroVideo from "../assets/videos/marvel_intro.mp4";
+import { Loader } from "../components/Loader";
 
 const widthSlider = window.innerWidth;
 
@@ -62,6 +63,7 @@ export const Studio = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const movieListRef = useRef<HTMLDivElement | null>(null);
     const seriesListRef = useRef<HTMLDivElement | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const { backdropVideo, seriesCompanyId } = companyId
         ? getConfigValues(companyId)
@@ -92,21 +94,27 @@ export const Studio = () => {
 
     const getMovies = async () => {
         if (companyId) {
+            setIsLoading(true);
             try {
                 const data = await getMoviesByCompany(parseInt(companyId));
                 setMovieList(data.results);
             } catch (error) {
                 console.error("Failed to fetch movies by company id", error);
+            } finally {
+                setIsLoading(false);
             }
         }
     };
 
     const getSeriesList = async () => {
+        setIsLoading(true);
         try {
             const data = await getSeries(seriesCompanyId);
             setSeriesList(data.results);
         } catch (error) {
             console.error("Failed to fetch series", error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -120,6 +128,10 @@ export const Studio = () => {
             element.scrollLeft += widthSlider - 150;
         }
     };
+
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
         <div className="z-0">
@@ -150,7 +162,11 @@ export const Studio = () => {
                             className="flex overflow-x-auto overflow-visible h-full gap-8 scrollbar-hide scroll-smooth py-4 px-3 z-20"
                         >
                             {movieList.map((item, index) => (
-                                <Link to={`../details/${item.id}`} key={index} className="shrink-0">
+                                <Link
+                                    to={`../movie/details/${item.id}`}
+                                    key={index}
+                                    className="shrink-0"
+                                >
                                     <img
                                         className="rounded-lg cursor-pointer w-[110px] md:w-[200px] hover:border-[3px] border-gray-300 hover:scale-110 shadow-lg shadow-black transition-all z-40"
                                         src={`${PICTURE_BASE_URL}${
@@ -185,13 +201,17 @@ export const Studio = () => {
                             className="flex overflow-x-auto overflow-visible h-full gap-8 scrollbar-hide scroll-smooth py-4 px-3 z-20"
                         >
                             {seriesList.map((item, index) => (
-                                <div key={index} className="shrink-0">
+                                <Link
+                                    to={`../tv/details/${item.id}`}
+                                    key={index}
+                                    className="shrink-0"
+                                >
                                     <img
                                         className="rounded-lg cursor-pointer w-[110px] md:w-[200px] hover:border-[3px] border-gray-300 hover:scale-110 shadow-lg shadow-black transition-all z-40"
                                         src={`${PICTURE_BASE_URL}${item.poster_path}`}
                                         alt={item.title}
                                     />
-                                </div>
+                                </Link>
                             ))}
                         </div>
                         <IoIosArrowForward

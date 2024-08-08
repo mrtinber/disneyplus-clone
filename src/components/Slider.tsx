@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { getTrends, PICTURE_BASE_URL } from "../services/ApiCall";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Movie } from "./types/Movie";
+import { Link } from "react-router-dom";
 
 const widthSlider = window.innerWidth;
 
@@ -74,19 +75,24 @@ export const Slider = () => {
                     ref={imageSliderRef}
                 >
                     {movieList.map((item, index) => (
-                        <div
+                        <Link
+                            to={
+                                item.media_type === "movie"
+                                    ? `movie/details/${item.id}`
+                                    : `tv/details/${item.id}`
+                            }
                             key={index}
                             className="relative min-w-full md:h-[350px] mr-5 rounded-md hover:border-[4px] border-gray-200 cursor-pointer transition-all shadow-lg shadow-black"
                         >
                             <img
-                                className="w-full h-full object-cover rounded-md "
+                                className="w-full h-full object-cover rounded-md"
                                 src={`${PICTURE_BASE_URL}${item.backdrop_path}`}
                                 alt={item.title}
                             />
                             <h2 className="font-bold text-white text-4xl absolute bottom-8 left-4">
                                 {item.title ? item.title : item.name}
                             </h2>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 
