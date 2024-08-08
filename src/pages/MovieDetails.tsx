@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails, PICTURE_BASE_URL } from "../services/ApiCall";
 import { Movie } from "../components/types/Movie";
-import { PlayButton } from "../components/PlayButton";
-import { Button } from "../components/Button";
+import { PlayButton } from "../components/ui/PlayButton";
+import { Button } from "../components/ui/Button";
 import { FaPlus } from "react-icons/fa6";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { GoDotFill } from "react-icons/go";
-import { Loader } from "../components/Loader";
+import { Loader } from "../components/ui/Loader";
 
 export const MovieDetails = () => {
     const { id } = useParams<{ id: string }>();
@@ -23,20 +23,20 @@ export const MovieDetails = () => {
 
     const getDetails = async () => {
         if (id) {
-            setIsLoading(true)
+            setIsLoading(true);
             try {
                 const data = await getMovieDetails(parseInt(id));
                 setDetails(data);
             } catch (error) {
                 console.error("Failed to get details from this id");
             } finally {
-                setIsLoading(false)
+                setIsLoading(false);
             }
         }
     };
 
     if (isLoading) {
-        return <Loader />
+        return <Loader />;
     }
 
     return (

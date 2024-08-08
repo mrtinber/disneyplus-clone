@@ -12,7 +12,7 @@ import StarWarsIntroVideo from "../assets/videos/starwars_intro.mp4";
 import NationalGeographicIntro from "../assets/videos/national_geographic_intro.mp4";
 import PixarIntroVideo from "../assets/videos/pixar_intro.mp4";
 import MarvelIntroVideo from "../assets/videos/marvel_intro.mp4";
-import { Loader } from "../components/Loader";
+import { Loader } from "../components/ui/Loader";
 
 const widthSlider = window.innerWidth;
 

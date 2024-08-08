@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { Header } from "./components/Header";
+import { Header } from "./components/layout/Header";
 import { Homepage } from "./pages/Homepage";
 import { Studio } from "./pages/Studio";
 import { MovieDetails } from "./pages/MovieDetails";

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { PICTURE_BASE_URL } from "../services/ApiCall";
-import { Movie } from "./types/Movie";
+import { PICTURE_BASE_URL } from "../../services/ApiCall";
+import { Movie } from "../types/Movie";
 
 export const PosterCard: React.FC<{ movie: Movie }> = ({ movie }) => {
     return (

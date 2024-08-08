@@ -15,13 +15,13 @@ export const Slider = () => {
         getMovies();
     }, []);
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            slideRight(imageSliderRef.current);
-        }, 7500);
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //         slideRight(imageSliderRef.current);
+    //     }, 7500);
 
-        return () => clearInterval(intervalId);
-    }, [movieList]);
+    //     return () => clearInterval(intervalId);
+    // }, [movieList]);
 
     const slideLeft = (element: HTMLDivElement | null) => {
         if (element) {

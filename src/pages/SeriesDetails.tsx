@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSeriesDetails, PICTURE_BASE_URL } from "../services/ApiCall";
-import { PlayButton } from "../components/PlayButton";
-import { Button } from "../components/Button";
+import { PlayButton } from "../components/ui/PlayButton";
+import { Button } from "../components/ui/Button";
 import { FaPlus } from "react-icons/fa6";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { GoDotFill } from "react-icons/go";
 import { Series } from "../components/types/Series";
-import { Loader } from "../components/Loader";
+import { Loader } from "../components/ui/Loader";
+import { Episodes } from "../components/Episodes";
 
 export const SeriesDetails = () => {
     const { id } = useParams<{ id: string }>();
@@ -36,7 +37,7 @@ export const SeriesDetails = () => {
     };
 
     if (isLoading) {
-        return <Loader />
+        return <Loader />;
     }
 
     return (
@@ -52,7 +53,7 @@ export const SeriesDetails = () => {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#282B35] from-30%"></div>
                 </div>
             )}
-            <div className="absolute -bottom-64 flex flex-col gap-10 px-5 md:px-16 p-2 bg-transparent">
+            <div className="flex flex-col absolute top-[320px] gap-10 px-5 md:px-16 p-2 bg-transparent">
                 <h2 className="text-white text-5xl font-bold">
                     {details?.name}
                 </h2>
@@ -142,29 +143,7 @@ export const SeriesDetails = () => {
                             )}
                         </button>
                     </div>
-                    <p className="text-white p-12">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ipsum, est, obcaecati qui voluptates recusandae cumque
-                        dolore vel, pariatur quibusdam veniam veritatis! At ex
-                        delectus quo aliquam. Sit porro reprehenderit sint
-                        itaque eligendi, ratione adipisci repellendus mollitia
-                        commodi ipsum amet dignissimos cumque doloremque quod
-                        sapiente ipsa natus maxime magnam eos voluptatum
-                        voluptatibus nobis omnis optio? Magni quo ad corrupti
-                        distinctio eligendi ullam! Iusto autem velit repellendus
-                        quis! In nemo rem ipsam temporibus consequatur nisi odio
-                        inventore ex officiis voluptatibus architecto sunt,
-                        quisquam autem voluptatum deleniti sapiente quibusdam
-                        eligendi expedita vel. Quisquam ab modi porro esse et!
-                        Esse enim sed sint illum voluptas. Sapiente voluptas,
-                        error voluptate totam aspernatur eligendi. Magni laborum
-                        eligendi consectetur ratione ea sit sapiente illo
-                        veritatis obcaecati! Unde molestias qui, tempore
-                        cupiditate sapiente nam quaerat hic illum, saepe est
-                        dicta fuga sint quas ut laborum veritatis quo dolorem,
-                        corrupti dolore sit distinctio ipsum iste sunt repellat!
-                        Sed, eos.
-                    </p>
+                    <Episodes seriesId={id}/>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { PosterCard } from "./PosterCard";
-import { MovieCard } from "./MovieCard";
+import { PosterCard } from "./ui/PosterCard";
+import { MovieCard } from "./ui/MovieCard";
 import { Movie } from "./types/Movie";
 import { getMoviesByGenre } from "../services/ApiCall";
 
