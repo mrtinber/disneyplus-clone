@@ -1,18 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Movie } from "../components/types/Movie";
-import {
-    getMoviesByCompany,
-    getSeries,
-    PICTURE_BASE_URL,
-} from "../services/ApiCall";
+import { getMoviesByCompany, getSeries } from "../services/ApiCall";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DisneyIntroVideo from "../assets/videos/disney_intro.mp4";
 import StarWarsIntroVideo from "../assets/videos/starwars_intro.mp4";
 import NationalGeographicIntro from "../assets/videos/national_geographic_intro.mp4";
 import PixarIntroVideo from "../assets/videos/pixar_intro.mp4";
 import MarvelIntroVideo from "../assets/videos/marvel_intro.mp4";
 import { Loader } from "../components/ui/Loader";
+import { PosterCard } from "../components/ui/PosterCard";
 
 const widthSlider = window.innerWidth;
 
@@ -162,21 +159,7 @@ export const Studio = () => {
                             className="flex overflow-x-auto overflow-visible h-full gap-8 scrollbar-hide scroll-smooth py-4 px-3 z-20"
                         >
                             {movieList.map((item, index) => (
-                                <Link
-                                    to={`../movie/details/${item.id}`}
-                                    key={index}
-                                    className="shrink-0"
-                                >
-                                    <img
-                                        className="rounded-lg cursor-pointer w-[110px] md:w-[200px] hover:border-[3px] border-gray-300 hover:scale-110 shadow-lg shadow-black transition-all z-40"
-                                        src={`${PICTURE_BASE_URL}${
-                                            item.poster_path
-                                                ? item.poster_path
-                                                : item.backdrop_path
-                                        }`}
-                                        alt={item.title}
-                                    />
-                                </Link>
+                                <PosterCard key={index} media={item} />
                             ))}
                         </div>
                         <IoIosArrowForward
@@ -201,17 +184,7 @@ export const Studio = () => {
                             className="flex overflow-x-auto overflow-visible h-full gap-8 scrollbar-hide scroll-smooth py-4 px-3 z-20"
                         >
                             {seriesList.map((item, index) => (
-                                <Link
-                                    to={`../tv/details/${item.id}`}
-                                    key={index}
-                                    className="shrink-0"
-                                >
-                                    <img
-                                        className="rounded-lg cursor-pointer w-[110px] md:w-[200px] hover:border-[3px] border-gray-300 hover:scale-110 shadow-lg shadow-black transition-all z-40"
-                                        src={`${PICTURE_BASE_URL}${item.poster_path}`}
-                                        alt={item.title}
-                                    />
-                                </Link>
+                                <PosterCard key={index} media={item} />
                             ))}
                         </div>
                         <IoIosArrowForward

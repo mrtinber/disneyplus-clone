@@ -33,7 +33,6 @@ export const getSeries = async (companyId: number) => {
         throw new Error("Failed to fetch series by company id");
     }
     const data = await response.json();
-    console.log(data);
     return data;
 };
 

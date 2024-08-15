@@ -58,7 +58,7 @@ export const MovieListByGenre = ({
                         {indexId % 3 === 0 ? (
                             <MovieCard key={index} movie={item} />
                         ) : (
-                            <PosterCard key={index} movie={item} />
+                            <PosterCard key={index} media={item} />
                         )}
                     </>
                 ))}
