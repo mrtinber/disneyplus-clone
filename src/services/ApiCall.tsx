@@ -65,10 +65,19 @@ export const getSeriesDetails = async (id: number) => {
     return data
 }
 
-export const getSeriesEpisodes = async (id: number) => {
-    const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/1?api_key=${API_KEY}`)
+export const getSeriesEpisodes = async (id: number, seasonNumber: number) => {
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${API_KEY}`)
     if(!response.ok) {
         throw new Error("Failed to fetch series episodes")
+    }
+    const data = await response.json()
+    return data
+}
+
+export const getSeriesRecommendations = async (id: number) => {
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}`)
+    if(!response.ok) {
+        throw new Error("Failed to fetch recommendations for this series")
     }
     const data = await response.json()
     return data

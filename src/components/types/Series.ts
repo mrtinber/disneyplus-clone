@@ -18,10 +18,24 @@ export interface Series {
     vote_count: number;
     runtime: number;
     number_of_seasons: number;
+    original_name: string;
     genres: [
         {
             id: number;
             name: string;
         }
     ];
+    created_by : [
+        {
+            id: number;
+            name: string;
+        }
+    ];
+    networks: [
+        {
+            id: number;
+            logo_path: string;
+            name: string;
+        }
+    ]
 }

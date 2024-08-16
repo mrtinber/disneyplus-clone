@@ -9,8 +9,10 @@ import { GoDotFill } from "react-icons/go";
 import { Series } from "../components/types/Series";
 import { Loader } from "../components/ui/Loader";
 import { Episodes } from "../components/Episodes";
+import { SeriesDetails } from "../components/SeriesDetails";
+import { Suggested } from "../components/Suggested";
 
-export const SeriesDetails = () => {
+export const SeriesPage = () => {
     const { id } = useParams<{ id: string }>();
     const [details, setDetails] = useState<Series>();
     const [activeButton, setActiveButton] = useState<
@@ -143,7 +145,14 @@ export const SeriesDetails = () => {
                             )}
                         </button>
                     </div>
-                    <Episodes seriesId={id}/>
+
+                    {activeButton === "EPISODES" ? (
+                        <Episodes seriesId={id} />
+                    ) : activeButton === "DETAILS" ? (
+                        <SeriesDetails seriesId={id} />
+                    ) : (
+                        <Suggested seriesId={id} />
+                    )}
                 </div>
             </div>
         </div>

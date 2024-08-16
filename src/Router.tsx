@@ -3,7 +3,7 @@ import { Header } from "./components/layout/Header";
 import { Homepage } from "./pages/Homepage";
 import { Studio } from "./pages/Studio";
 import { MovieDetails } from "./pages/MovieDetails";
-import { SeriesDetails } from "./pages/SeriesDetails";
+import { SeriesPage } from "./pages/SeriesPage";
 
 const Layout = () => (
     <>
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "tv/details/:id",
-                element: <SeriesDetails />,
+                element: <SeriesPage />,
             },
         ],
     },
