@@ -54,18 +54,20 @@ export const MovieDetails = ({
                             </p>
                         ))}
                         <h3 className="text-md text-white/50">From</h3>
-                        {details.production_companies.map((item, index) =>
-                            item.logo_path === null ? (
-                                <p>{item.name}</p>
-                            ) : (
-                                <img
-                                    key={index}
-                                    src={`${PICTURE_BASE_URL}${item.logo_path}`}
-                                    alt={`Logo of ${item.name}`}
-                                    className="w-12"
-                                />
-                            )
-                        )}
+                        <div className="flex flex-col gap-2">
+                            {details.production_companies.map((item, index) =>
+                                item.logo_path === null ? (
+                                    <p>{item.name}</p>
+                                ) : (
+                                    <img
+                                        key={index}
+                                        src={`${PICTURE_BASE_URL}${item.logo_path}`}
+                                        alt={`Logo of ${item.name}`}
+                                        className="w-12 object-contain"
+                                    />
+                                )
+                            )}
+                        </div>
                     </div>
                 </div>
             )}

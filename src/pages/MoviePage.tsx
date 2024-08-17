@@ -18,6 +18,7 @@ export const MoviePage = () => {
         "SUGGESTED" | "EXTRAS" | "DETAILS"
     >("SUGGESTED");
     const [isLoading, setIsLoading] = useState(true);
+    const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false)
 
     useEffect(() => {
         getDetails();
@@ -40,6 +41,10 @@ export const MoviePage = () => {
     if (isLoading) {
         return <Loader />;
     }
+    
+    const handleBackgroundLoad = () => {
+        setIsBackgroundLoaded(true)
+    }
 
     return (
         <div className="relative">
@@ -48,7 +53,8 @@ export const MoviePage = () => {
                     <img
                         src={`${PICTURE_BASE_URL}${details.backdrop_path}`}
                         alt={details.title}
-                        className="w-full h-screen object-cover"
+                        onLoad={handleBackgroundLoad}
+                        className={`w-full h-screen object-cover ${ isBackgroundLoaded ? "opacity-100" : "opacity-0"} duration-500 ease-in-out`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent to-20%"></div>
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#282B35] from-30%"></div>
@@ -137,7 +143,7 @@ export const MoviePage = () => {
                     ) : activeButton === "DETAILS" ? (
                         <MovieDetails seriesId={id} />
                     ) : (
-                        <p className="text-white p-12">
+                        <p className="text-white py-6 text-justify">
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Ipsum, est, obcaecati qui voluptates
                             recusandae cumque dolore vel, pariatur quibusdam
