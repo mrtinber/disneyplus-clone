@@ -22,4 +22,18 @@ export interface Movie {
             name: string;
         }
     ];
+    production_companies: [
+        {
+            id: number;
+            logo_path: string;
+            name: string;
+        }
+    ];
+    production_countries: [
+        {
+            name: string;
+            iso_3166_1: string;
+        }
+    ]
+    tagline: string;
 }

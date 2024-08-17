@@ -82,3 +82,12 @@ export const getSeriesRecommendations = async (id: number) => {
     const data = await response.json()
     return data
 }
+
+export const getMovieRecommendations = async (id: number) => {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`)
+    if(!response.ok) {
+        throw new Error("Failed to fetch recommendations for this movie")
+    }
+    const data = await response.json()
+    return data
+}

@@ -2,7 +2,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Header } from "./components/layout/Header";
 import { Homepage } from "./pages/Homepage";
 import { Studio } from "./pages/Studio";
-import { MovieDetails } from "./pages/MovieDetails";
+import { MoviePage } from "./pages/MoviePage";
 import { SeriesPage } from "./pages/SeriesPage";
 
 const Layout = () => (
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "movie/details/:id",
-                element: <MovieDetails />,
+                element: <MoviePage />,
             },
             {
                 path: "tv/details/:id",
