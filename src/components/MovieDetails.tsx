@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
-import { getMovieDetails, PICTURE_BASE_URL } from "../services/ApiCall";
+import {
+    getMovieCredits,
+    getMovieDetails,
+    PICTURE_BASE_URL,
+} from "../services/ApiCall";
 import { Movie } from "./types/Movie";
+import { Credits } from "./types/Credits";
 
 export const MovieDetails = ({
     seriesId,
@@ -8,9 +13,11 @@ export const MovieDetails = ({
     seriesId: string | undefined;
 }) => {
     const [details, setDetails] = useState<Movie>();
+    const [credits, setCredits] = useState<Credits>();
 
     useEffect(() => {
         getDetails();
+        getCast();
     }, []);
 
     const getDetails = async () => {
@@ -24,11 +31,22 @@ export const MovieDetails = ({
         }
     };
 
+    const getCast = async () => {
+        if (seriesId) {
+            try {
+                const data = await getMovieCredits(parseInt(seriesId));
+                setCredits(data);
+            } catch (error) {
+                console.error("Failed to retrieve credits from the API.");
+            }
+        }
+    };
+
     return (
         <div className="text-white py-6">
             {details && (
                 <div className="flex gap-16 w-full">
-                    <div className="w-3/4 flex flex-col gap-2">
+                    <div className="w-3/5 flex flex-col gap-2">
                         <h2 className="text-2xl font-medium">
                             {details.tagline}
                         </h2>
@@ -38,7 +56,7 @@ export const MovieDetails = ({
                         </p>
                     </div>
 
-                    <div className="w-1/4 flex flex-col gap-2">
+                    <div className="w-1/5 flex flex-col gap-2">
                         <h3 className="text-md text-white/50">Release date </h3>
                         <p className="text-md font-light">
                             {details.release_date}
@@ -68,6 +86,20 @@ export const MovieDetails = ({
                                 )
                             )}
                         </div>
+                    </div>
+                    <div className="w-1/5 flex flex-col gap-2">
+                        <h3 className="text-md text-white/50">Cast</h3>
+                        {credits?.cast.map(
+                            (item, index) =>
+                                index < 10 && (
+                                    <p
+                                        key={index}
+                                        className="text-md font-light"
+                                    >
+                                        {item.name}
+                                    </p>
+                                )
+                        )}
                     </div>
                 </div>
             )}

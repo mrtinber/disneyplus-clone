@@ -91,3 +91,21 @@ export const getMovieRecommendations = async (id: number) => {
     const data = await response.json()
     return data
 }
+
+export const getMovieCredits = async (id: number) => {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`)
+    if(!response.ok) {
+        throw new Error("Failed to fetch credits for this movie")
+    }
+    const data = await response.json()
+    return data
+}
+
+export const getSeriesCredits = async (id: number) => {
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${API_KEY}`)
+    if(!response.ok) {
+        throw new Error("Failed to fetch credits for this movie")
+    }
+    const data = await response.json()
+    return data
+}
