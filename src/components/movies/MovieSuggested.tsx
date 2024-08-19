@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { Series } from "./types/Series";
-import { getSeriesRecommendations } from "../services/ApiCall";
-import { MovieCard } from "./ui/MovieCard";
+import { getMovieRecommendations } from "../../services/ApiCall";
+import { MovieCard } from "../ui/MovieCard";
+import { Movie } from "../../types/movie";
 
-export const Suggested = ({ seriesId }: { seriesId: string | undefined }) => {
-    const [recommendations, setRecommendations] = useState<Series[]>([]);
+export const MovieSuggested = ({
+    seriesId,
+}: {
+    seriesId: string | undefined;
+}) => {
+    const [recommendations, setRecommendations] = useState<Movie[]>([]);
 
     useEffect(() => {
         getRecommendations();
@@ -13,7 +17,7 @@ export const Suggested = ({ seriesId }: { seriesId: string | undefined }) => {
     const getRecommendations = async () => {
         if (seriesId) {
             try {
-                const data = await getSeriesRecommendations(parseInt(seriesId));
+                const data = await getMovieRecommendations(parseInt(seriesId));
                 setRecommendations(data.results);
                 console.log(data.results);
             } catch (error) {

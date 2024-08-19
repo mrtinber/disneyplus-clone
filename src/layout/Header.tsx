@@ -5,7 +5,7 @@ import { FaBars } from "react-icons/fa6";
 import { PiTelevisionFill } from "react-icons/pi";
 import { HiDotsVertical, HiHome } from "react-icons/hi";
 import { CgSearch } from "react-icons/cg";
-import { NavItem } from "../ui/NavItem";
+import { NavItem } from "../components/ui/NavItem";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 

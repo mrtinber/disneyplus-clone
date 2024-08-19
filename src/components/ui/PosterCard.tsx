@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { PICTURE_BASE_URL } from "../../services/ApiCall";
-import { Movie } from "../types/Movie";
+import { Movie } from "../../types/movie";
 import { useState } from "react";
-import { Series } from "../types/Series";
+import { Series } from "../../types/series";
 
 export const PosterCard: React.FC<{ media: Movie | Series }> = ({ media }) => {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -12,7 +12,12 @@ export const PosterCard: React.FC<{ media: Movie | Series }> = ({ media }) => {
     };
 
     return (
-        <Link to={`../${'first_air_date' in media ? 'tv' : 'movie'}/details/${media.id}`} className="shrink-0">
+        <Link
+            to={`../${"first_air_date" in media ? "tv" : "movie"}/details/${
+                media.id
+            }`}
+            className="shrink-0"
+        >
             {!isLoaded && (
                 <div className="text-white text-center content-center bg-slate-700 rounded-lg cursor-pointer w-[110px] h-[300px] md:w-[200px] hover:border-[3px] border-gray-300 hover:scale-110 shadow-lg shadow-black transition-all">
                     {media.name || media.title}

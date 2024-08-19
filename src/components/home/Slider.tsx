@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { getTrends, PICTURE_BASE_URL } from "../services/ApiCall";
+import { getTrends, PICTURE_BASE_URL } from "../../services/ApiCall";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { Movie } from "./types/Movie";
+import { Movie } from "../../types/movie";
 import { Link } from "react-router-dom";
 
 const widthSlider = window.innerWidth;

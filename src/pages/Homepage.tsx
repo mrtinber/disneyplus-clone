@@ -1,6 +1,6 @@
-import { Categories } from "../components/Categories";
-import MovieGenresList from "../components/MovieGenresList";
-import { Slider } from "../components/Slider";
+import { Categories } from "../components/home/Categories";
+import MovieGenresList from "../components/home/MovieGenresList";
+import { Slider } from "../components/home/Slider";
 
 export const Homepage = () => {
     return (

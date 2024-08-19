@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { PICTURE_BASE_URL } from "../../services/ApiCall";
-import { Movie } from "../types/Movie";
+import { Movie } from "../../types/movie";
 import { useState } from "react";
-import { Series } from "../types/Series";
+import { Series } from "../../types/series";
 
 export const MovieCard: React.FC<{ media: Movie | Series }> = ({ media }) => {
     const [isLoaded, setIsLoaded] = useState(false);

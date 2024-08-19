@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails, PICTURE_BASE_URL } from "../services/ApiCall";
-import { Movie } from "../components/types/Movie";
+import { Movie } from "../types/movie";
 import { PlayButton } from "../components/ui/PlayButton";
 import { Button } from "../components/ui/Button";
 import { FaPlus } from "react-icons/fa6";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { GoDotFill } from "react-icons/go";
 import { Loader } from "../components/ui/Loader";
-import { MovieDetails } from "../components/MovieDetails";
-import { MovieSuggested } from "../components/MovieSuggested";
+import { MovieDetails } from "../components/movies/MovieDetails";
+import { MovieSuggested } from "../components/movies/MovieSuggested";
 
 export const MoviePage = () => {
     const { id } = useParams<{ id: string }>();
@@ -18,7 +18,7 @@ export const MoviePage = () => {
         "SUGGESTED" | "EXTRAS" | "DETAILS"
     >("SUGGESTED");
     const [isLoading, setIsLoading] = useState(true);
-    const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false)
+    const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
 
     useEffect(() => {
         getDetails();
@@ -41,10 +41,10 @@ export const MoviePage = () => {
     if (isLoading) {
         return <Loader />;
     }
-    
+
     const handleBackgroundLoad = () => {
-        setIsBackgroundLoaded(true)
-    }
+        setIsBackgroundLoaded(true);
+    };
 
     return (
         <div className="relative">
@@ -54,7 +54,9 @@ export const MoviePage = () => {
                         src={`${PICTURE_BASE_URL}${details.backdrop_path}`}
                         alt={details.title}
                         onLoad={handleBackgroundLoad}
-                        className={`w-full h-screen object-cover ${ isBackgroundLoaded ? "opacity-100" : "opacity-0"} duration-500 ease-in-out`}
+                        className={`w-full h-screen object-cover ${
+                            isBackgroundLoaded ? "opacity-100" : "opacity-0"
+                        } duration-500 ease-in-out`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent to-20%"></div>
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#282B35] from-30%"></div>

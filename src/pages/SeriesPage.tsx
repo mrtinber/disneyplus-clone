@@ -6,11 +6,11 @@ import { Button } from "../components/ui/Button";
 import { FaPlus } from "react-icons/fa6";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { GoDotFill } from "react-icons/go";
-import { Series } from "../components/types/Series";
+import { Series } from "../types/series";
 import { Loader } from "../components/ui/Loader";
-import { Episodes } from "../components/Episodes";
-import { SeriesDetails } from "../components/SeriesDetails";
-import { Suggested } from "../components/Suggested";
+import { Episodes } from "../components/series/Episodes";
+import { SeriesDetails } from "../components/series/SeriesDetails";
+import { Suggested } from "../components/series/Suggested";
 
 export const SeriesPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -19,7 +19,7 @@ export const SeriesPage = () => {
         "EPISODES" | "SUGGESTED" | "DETAILS"
     >("EPISODES");
     const [isLoading, setIsLoading] = useState(true);
-    const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false)
+    const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
 
     useEffect(() => {
         getDetails();
@@ -44,8 +44,8 @@ export const SeriesPage = () => {
     }
 
     const handleBackgroundLoad = () => {
-        setIsBackgroundLoaded(true)
-    }
+        setIsBackgroundLoaded(true);
+    };
 
     return (
         <div className="relative">
@@ -55,7 +55,9 @@ export const SeriesPage = () => {
                         src={`${PICTURE_BASE_URL}${details.backdrop_path}`}
                         alt={details.name}
                         onLoad={handleBackgroundLoad}
-                        className={`w-full h-screen object-cover ${ isBackgroundLoaded ? "opacity-100" : "opacity-0"} duration-500 ease-in-out`}
+                        className={`w-full h-screen object-cover ${
+                            isBackgroundLoaded ? "opacity-100" : "opacity-0"
+                        } duration-500 ease-in-out`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent to-20%"></div>
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#282B35] from-30%"></div>

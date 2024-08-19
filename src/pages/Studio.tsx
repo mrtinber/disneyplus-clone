@@ -1,65 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { Movie } from "../components/types/Movie";
+import { Movie } from "../types/movie";
 import { getMoviesByCompany, getSeries } from "../services/ApiCall";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useParams } from "react-router-dom";
-import DisneyIntroVideo from "../assets/videos/disney_intro.mp4";
-import StarWarsIntroVideo from "../assets/videos/starwars_intro.mp4";
-import NationalGeographicIntro from "../assets/videos/national_geographic_intro.mp4";
-import PixarIntroVideo from "../assets/videos/pixar_intro.mp4";
-import MarvelIntroVideo from "../assets/videos/marvel_intro.mp4";
 import { Loader } from "../components/ui/Loader";
-import { PosterCard } from "../components/ui/PosterCard";
-
-const widthSlider = window.innerWidth;
-
-interface Config {
-    [key: string]: {
-        backdropVideo: string;
-        seriesCompanyId: number;
-        thirdListId?: number;
-    };
-}
-
-const config: Config = {
-    "2": {
-        backdropVideo: DisneyIntroVideo,
-        seriesCompanyId: 6125,
-        thirdListId: 670,
-    },
-    "420": {
-        backdropVideo: MarvelIntroVideo,
-        seriesCompanyId: 420,
-    },
-    "7521": {
-        backdropVideo: NationalGeographicIntro,
-        seriesCompanyId: 7521,
-    },
-    "3": {
-        backdropVideo: PixarIntroVideo,
-        seriesCompanyId: 3,
-    },
-    "1": {
-        backdropVideo: StarWarsIntroVideo,
-        seriesCompanyId: 1,
-    },
-};
-
-const getConfigValues = (companyId: string) => {
-    const backdropVideo = config[companyId]?.backdropVideo || "";
-    const seriesCompanyId = config[companyId]?.seriesCompanyId || 0;
-    const thirdListId = config[companyId]?.thirdListId || 0;
-
-    return { backdropVideo, seriesCompanyId, thirdListId };
-};
+import { PosterCarrousel } from "../components/ui/PosterCarrousel";
+import { BackdropVideo } from "../components/studio/BackdropVideo";
+import { getConfigValues } from "../components/studio/StudioConfig";
 
 export const Studio = () => {
     const { companyId } = useParams<{ companyId: string }>();
     const [movieList, setMovieList] = useState<Movie[]>([]);
     const [seriesList, setSeriesList] = useState<Movie[]>([]);
     const videoRef = useRef<HTMLVideoElement>(null);
-    const movieListRef = useRef<HTMLDivElement | null>(null);
-    const seriesListRef = useRef<HTMLDivElement | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     const { backdropVideo, seriesCompanyId } = companyId
@@ -69,23 +21,7 @@ export const Studio = () => {
     useEffect(() => {
         if (companyId) {
             getMovies();
-        }
-        getSeriesList();
-
-        const video = videoRef.current;
-        if (video) {
-            const handleTimeUpdate = () => {
-                if (video.currentTime >= 29) {
-                    // Mettre en pause, ajustez selon votre besoin
-                    video.pause();
-                }
-            };
-
-            video.addEventListener("timeupdate", handleTimeUpdate);
-
-            return () => {
-                video.removeEventListener("timeupdate", handleTimeUpdate);
-            };
+            getSeriesList();
         }
     }, [companyId]);
 
@@ -115,85 +51,17 @@ export const Studio = () => {
         }
     };
 
-    const slideLeft = (element: HTMLDivElement | null) => {
-        if (element) {
-            element.scrollLeft -= widthSlider - 150;
-        }
-    };
-    const slideRight = (element: HTMLDivElement | null) => {
-        if (element) {
-            element.scrollLeft += widthSlider - 150;
-        }
-    };
-
     if (isLoading) {
         return <Loader />;
     }
 
     return (
         <div className="z-0">
-            <div className="relative">
-                <video
-                    ref={videoRef}
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                    src={backdropVideo}
-                    className="w-full h-screen object-cover"
-                ></video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent to-15%"></div>
-            </div>
+            <BackdropVideo videoRef={videoRef} backdropVideo={backdropVideo} />
 
             <div className=" bg-gradient-to-t from-transparent from-65% to-black">
-                <div className="py-4 px-8 md:px-16">
-                    <h2 className="text-white text-lg font-medium">Movies</h2>
-                    <div className="relative">
-                        <IoIosArrowBack
-                            onClick={() => slideLeft(movieListRef.current)}
-                            className="text-[50px] text-white p-2 z-50 cursor-pointer hidden md:block hover:scale-125 transition-all absolute top-1/2 transform -translate-y-1/2"
-                            aria-label="Slide left"
-                        />
-                        <div
-                            ref={movieListRef}
-                            className="flex overflow-x-auto overflow-visible h-full gap-8 scrollbar-hide scroll-smooth py-4 px-3 z-20"
-                        >
-                            {movieList.map((item, index) => (
-                                <PosterCard key={index} media={item} />
-                            ))}
-                        </div>
-                        <IoIosArrowForward
-                            onClick={() => slideRight(movieListRef.current)}
-                            className="text-[50px] text-white p-2 z-50 cursor-pointer hidden md:block hover:scale-125 transition-all absolute right-0 top-1/2 transform -translate-y-1/2"
-                            aria-label="Slide right"
-                        />
-                    </div>
-                </div>
-                <div className="py-4 px-8 md:px-16">
-                    <h2 className="text-white text-lg font-medium">
-                        TV Series
-                    </h2>
-                    <div className="relative">
-                        <IoIosArrowBack
-                            onClick={() => slideLeft(seriesListRef.current)}
-                            className="text-[50px] text-white p-2 z-50 cursor-pointer hidden md:block hover:scale-125 transition-all absolute top-1/2 transform -translate-y-1/2"
-                            aria-label="Slide left"
-                        />
-                        <div
-                            ref={seriesListRef}
-                            className="flex overflow-x-auto overflow-visible h-full gap-8 scrollbar-hide scroll-smooth py-4 px-3 z-20"
-                        >
-                            {seriesList.map((item, index) => (
-                                <PosterCard key={index} media={item} />
-                            ))}
-                        </div>
-                        <IoIosArrowForward
-                            onClick={() => slideRight(seriesListRef.current)}
-                            className="text-[50px] text-white p-2 z-50 cursor-pointer hidden md:block hover:scale-125 transition-all absolute right-0 top-1/2 transform -translate-y-1/2"
-                            aria-label="Slide right"
-                        />
-                    </div>
-                </div>
+                <PosterCarrousel mediaList={movieList} header="Movies" />
+                <PosterCarrousel mediaList={seriesList} header="Series" />
             </div>
         </div>
     );

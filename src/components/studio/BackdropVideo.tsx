@@ -1,0 +1,42 @@
+import { useEffect } from "react";
+
+export const BackdropVideo = ({
+    videoRef,
+    backdropVideo,
+}: {
+    videoRef: React.RefObject<HTMLVideoElement>;
+    backdropVideo: string;
+}) => {
+    useEffect(() => {
+        const video = videoRef.current;
+        if (video) {
+            const handleTimeUpdate = () => {
+                if (video.currentTime >= 29) {
+                    // Mettre en pause, ajustez selon votre besoin
+                    video.pause();
+                }
+            };
+
+            video.addEventListener("timeupdate", handleTimeUpdate);
+
+            return () => {
+                video.removeEventListener("timeupdate", handleTimeUpdate);
+            };
+        }
+    });
+
+    return (
+        <div className="relative">
+            <video
+                ref={videoRef}
+                muted
+                loop
+                autoPlay
+                playsInline
+                src={backdropVideo}
+                className="w-full h-screen object-cover"
+            ></video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent to-15%"></div>
+        </div>
+    );
+};

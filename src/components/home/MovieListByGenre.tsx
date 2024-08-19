@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { PosterCard } from "./ui/PosterCard";
-import { MovieCard } from "./ui/MovieCard";
-import { Movie } from "./types/Movie";
-import { getMoviesByGenre } from "../services/ApiCall";
+import { PosterCard } from "../ui/PosterCard";
+import { MovieCard } from "../ui/MovieCard";
+import { Movie } from "../../types/movie";
+import { getMoviesByGenre } from "../../services/ApiCall";
 
 const widthSlider = window.innerWidth;
 
