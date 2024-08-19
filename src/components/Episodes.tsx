@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Episode } from "./types/Episode";
 import {
     getSeriesDetails,
@@ -6,6 +6,7 @@ import {
     PICTURE_BASE_URL,
 } from "../services/ApiCall";
 import { Loader } from "./ui/Loader";
+import { FaChevronDown } from "react-icons/fa6";
 
 export const Episodes = ({ seriesId }: { seriesId: string | undefined }) => {
     const [episodesList, setEpisodesList] = useState<Episode[]>([]);
@@ -15,6 +16,8 @@ export const Episodes = ({ seriesId }: { seriesId: string | undefined }) => {
     const [loadedImages, setLoadedImages] = useState<{
         [key: number]: boolean;
     }>({});
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         getSeasons();
@@ -23,6 +26,22 @@ export const Episodes = ({ seriesId }: { seriesId: string | undefined }) => {
     useEffect(() => {
         getEpisodes();
     }, [selectedSeason]);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target as Node)
+            ) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        window.addEventListener("click", handleClickOutside);
+        return () => {
+            window.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
 
     const getEpisodes = async () => {
         if (seriesId) {
@@ -58,29 +77,52 @@ export const Episodes = ({ seriesId }: { seriesId: string | undefined }) => {
 
     const seasons = Array.from({ length: numberOfSeasons }, (_, i) => i + 1);
 
-    const handleSeasonChange = (
-        event: React.ChangeEvent<HTMLSelectElement>
-    ) => {
-        setSelectedSeason(Number(event.target.value));
+    const handleSeasonChange = (season: number) => {
+        setSelectedSeason(season);
+        setIsDropdownOpen(false)
     };
 
     const handleThumbnailLoading = (index: number) => {
         setLoadedImages((prev) => ({ ...prev, [index]: true }));
     };
 
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
     return (
         <div className="flex flex-col gap-6 py-6 overflow-y-auto max-h-screen scrollbar-hide scroll-smooth">
-            <select
-                value={selectedSeason}
-                onChange={handleSeasonChange}
-                className="text-white flex items-center justify-center gap-2 bg-white/30 hover:bg-white hover:text-[#292c36] rounded-full py-2 px-4 transition-all max-w-fit"
-            >
-                {seasons.map((season) => (
-                    <option key={season} value={season}>
-                        Season {season}
-                    </option>
-                ))}
-            </select>
+            <div className="w-32 relative" ref={dropdownRef}>
+                <button
+                    value={selectedSeason}
+                    onClick={toggleDropdown}
+                    className={`text-white w-full flex items-center justify-between gap-2 bg-white/30 hover:bg-white hover:text-[#292c36] ${isDropdownOpen ? "rounded-b-none rounded-t-xl" : "rounded-full"} py-2 px-4 transition-all`}
+                >
+                    Season {selectedSeason}{" "}
+                    <FaChevronDown
+                        className={`${
+                            isDropdownOpen ? "rotate-180" : ""
+                        } transition-transform duration-300`}
+                    />
+                </button>
+                {isDropdownOpen && (
+                    <div className="bg-[#696B72]/90 w-full rounded-b-xl overflow-hidden absolute top-full left-0">
+                        <ul>
+                            {seasons.map((season) => (
+                                <li
+                                    key={season}
+                                    value={season}
+                                    onClick={() => handleSeasonChange(season)}
+                                    className="text-white hover:bg-white hover:text-[#292c36] py-2 px-4 cursor-pointer transition-all"
+                                >
+                                    Season {season}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </div>
+
             <div className="flex flex-col gap-4">
                 {episodesList.map((item, index) => (
                     <div key={index} className="flex gap-4 w-full h-36">
