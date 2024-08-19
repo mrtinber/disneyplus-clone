@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import DisneyLogo from "../assets/images/viewers-disney.png";
-import MarvelLogo from "../assets/images/viewers-marvel.png";
-import NationalGeographicLogo from "../assets/images/viewers-national.png";
-import PixarLogo from "../assets/images/viewers-pixar.png";
-import StarWarsLogo from "../assets/images/viewers-starwars.png";
+import DisneyLogo from "../../assets/images/viewers-disney.png";
+import MarvelLogo from "../../assets/images/viewers-marvel.png";
+import NationalGeographicLogo from "../../assets/images/viewers-national.png";
+import PixarLogo from "../../assets/images/viewers-pixar.png";
+import StarWarsLogo from "../../assets/images/viewers-starwars.png";
 
-import DisneyVideo from "../assets/videos/1564674844-disney.mp4";
-import MarvelVideo from "../assets/videos/1564676115-marvel.mp4";
-import NationalGeographicVideo from "../assets/videos/1564676296-national-geographic.mp4";
-import PixarVideo from "../assets/videos/1564676714-pixar.mp4";
-import StarWarsVideo from "../assets/videos/1608229455-star-wars.mp4";
+import DisneyVideo from "../../assets/videos/1564674844-disney.mp4";
+import MarvelVideo from "../../assets/videos/1564676115-marvel.mp4";
+import NationalGeographicVideo from "../../assets/videos/1564676296-national-geographic.mp4";
+import PixarVideo from "../../assets/videos/1564676714-pixar.mp4";
+import StarWarsVideo from "../../assets/videos/1608229455-star-wars.mp4";
 
 export const Categories = () => {
     const CategoryList = [
