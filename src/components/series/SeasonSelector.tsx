@@ -39,7 +39,7 @@ export const SeasonSelector = ({numberOfSeasons, setSelectedSeason, selectedSeas
     };
 
     return (
-        <div className="w-32 relative" ref={dropdownRef}>
+        <div className="w-[136px] relative" ref={dropdownRef}>
             <button
                 value={selectedSeason}
                 onClick={toggleDropdown}

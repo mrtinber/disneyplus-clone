@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getSeriesDetails, PICTURE_BASE_URL } from "../services/ApiCall";
 import { PlayButton } from "../components/ui/PlayButton";
 import { Button } from "../components/ui/Button";
@@ -12,14 +12,15 @@ import { Episodes } from "../components/series/Episodes";
 import { SeriesDetails } from "../components/series/SeriesDetails";
 import { Suggested } from "../components/series/Suggested";
 
+type TabButtons = "EPISODES" | "SUGGESTED" | "DETAILS";
+
 export const SeriesPage = () => {
     const { id } = useParams<{ id: string }>();
     const [details, setDetails] = useState<Series>();
-    const [activeButton, setActiveButton] = useState<
-        "EPISODES" | "SUGGESTED" | "DETAILS"
-    >("EPISODES");
+    const [activeButton, setActiveButton] = useState<TabButtons>("EPISODES");
     const [isLoading, setIsLoading] = useState(true);
     const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getDetails();
@@ -33,6 +34,7 @@ export const SeriesPage = () => {
                 setDetails(data);
             } catch (error) {
                 console.error("Failed to get details from this id");
+                navigate("/error");
             } finally {
                 setIsLoading(false);
             }

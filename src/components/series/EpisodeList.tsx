@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PICTURE_BASE_URL } from "../../services/ApiCall";
-import { Episode } from "../../types/Episode";
+import { Episode } from "../../types/episode";
 
 export const EpisodeList = ({ episodesList }: { episodesList: Episode[] }) => {
     const [loadedImages, setLoadedImages] = useState<{

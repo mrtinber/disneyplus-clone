@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getMovieDetails, PICTURE_BASE_URL } from "../services/ApiCall";
 import { Movie } from "../types/movie";
 import { PlayButton } from "../components/ui/PlayButton";
@@ -11,14 +11,15 @@ import { Loader } from "../components/ui/Loader";
 import { MovieDetails } from "../components/movies/MovieDetails";
 import { MovieSuggested } from "../components/movies/MovieSuggested";
 
+type TabButtons = "SUGGESTED" | "EXTRAS" | "DETAILS";
+
 export const MoviePage = () => {
     const { id } = useParams<{ id: string }>();
     const [details, setDetails] = useState<Movie>();
-    const [activeButton, setActiveButton] = useState<
-        "SUGGESTED" | "EXTRAS" | "DETAILS"
-    >("SUGGESTED");
+    const [activeButton, setActiveButton] = useState<TabButtons>("SUGGESTED");
     const [isLoading, setIsLoading] = useState(true);
     const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getDetails();
@@ -32,6 +33,7 @@ export const MoviePage = () => {
                 setDetails(data);
             } catch (error) {
                 console.error("Failed to get details from this id");
+                navigate("/error");
             } finally {
                 setIsLoading(false);
             }
