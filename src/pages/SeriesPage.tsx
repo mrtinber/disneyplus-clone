@@ -48,7 +48,7 @@ export const SeriesPage = () => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative flex-1">
             {details && (
                 <div className="relative">
                     <img
