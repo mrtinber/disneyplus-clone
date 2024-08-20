@@ -4,6 +4,7 @@ import { Homepage } from "./pages/Homepage";
 import { Studio } from "./pages/Studio";
 import { MoviePage } from "./pages/MoviePage";
 import { SeriesPage } from "./pages/SeriesPage";
+import { ErrorPage } from "./pages/ErrorPage";
 
 const Layout = () => (
     <>
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Layout />,
         errorElement: (
-            <p className="text-white">Whoops, something went wrong !</p>
+            <ErrorPage />
         ),
         children: [
             {
