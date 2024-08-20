@@ -25,7 +25,7 @@ export const EpisodeList = ({ episodesList }: { episodesList: Episode[] }) => {
                         onLoad={() => handleThumbnailLoading(index)}
                         className={`w-64 rounded-md object-cover ${
                             loadedImages[index] ? "opacity-100" : "opacity-0"
-                        } duration-500 ease-in-out`}
+                        } duration-500 ease-in-out cursor-pointer`}
                     />
                     <div
                         className="text-white flex flex-col gap-4 py-1"

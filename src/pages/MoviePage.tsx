@@ -47,9 +47,9 @@ export const MoviePage = () => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative min-h-screen">
             {details && (
-                <div className="relative">
+                <div className="absolute w-full z-0">
                     <img
                         src={`${PICTURE_BASE_URL}${details.backdrop_path}`}
                         alt={details.title}
@@ -59,10 +59,10 @@ export const MoviePage = () => {
                         } duration-500 ease-in-out`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent to-20%"></div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#282B35] from-30%"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#181925] from-30%"></div>
                 </div>
             )}
-            <div className="absolute top-[320px] flex flex-col gap-10 px-5 md:px-16 p-2 bg-transparent">
+            <div className="relative z-10 pt-96 flex flex-col gap-10 px-5 md:px-16 p-2 bg-transparent">
                 <h2 className="text-white text-5xl font-bold">
                     {details?.title}
                 </h2>

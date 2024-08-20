@@ -5,11 +5,13 @@ import { Studio } from "./pages/Studio";
 import { MoviePage } from "./pages/MoviePage";
 import { SeriesPage } from "./pages/SeriesPage";
 import { ErrorPage } from "./pages/ErrorPage";
+import { Footer } from "./layout/Footer";
 
 const Layout = () => (
     <>
         <Header />
         <Outlet />
+        <Footer />
     </>
 );
 
