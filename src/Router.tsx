@@ -1,11 +1,11 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { Header } from "./layout/Header";
-import { HomePage } from "./pages/HomePage";
-import { StudioPage } from "./pages/StudioPage";
-import { MoviePage } from "./pages/MoviePage";
-import { SeriesPage } from "./pages/SeriesPage";
-import { ErrorPage } from "./pages/ErrorPage";
-import { Footer } from "./layout/Footer";
+import { Header } from "./presentation/layout/Header";
+import { HomePage } from "./presentation/pages/HomePage";
+import { StudioPage } from "./presentation/pages/StudioPage";
+import { MoviePage } from "./presentation/pages/MoviePage";
+import { SeriesPage } from "./presentation/pages/SeriesPage";
+import { ErrorPage } from "./presentation/pages/ErrorPage";
+import { Footer } from "./presentation/layout/Footer";
 
 const Layout = () => (
     <>
