@@ -74,7 +74,9 @@ export const Header = () => {
                                 )
                         )}
                         <div className="relative" onClick={toggleMenu}>
-                            <NavItem name="" Icon={HiDotsVertical} />
+                            <button className="group flex items-center gap-4 text-white underline-offset-8 font-sans font-normal">
+                                <HiDotsVertical />
+                            </button>
                             {menuOpen && (
                                 <div className="absolute mt-3 z-[100] bg-[#060a12] border border-gray-800 px-6 py-3 flex flex-col rounded-md gap-3">
                                     {menu.map(
@@ -92,7 +94,9 @@ export const Header = () => {
                         </div>
                     </div>
                     <div className="relative sm:hidden" onClick={toggleMenu}>
-                        <NavItem name="" Icon={FaBars} />
+                        <button className="group flex items-center gap-4 text-white underline-offset-8 font-sans font-normal">
+                            <FaBars />
+                        </button>
                         {menuOpen && (
                             <div className="absolute mt-3 z-[100] bg-[#060a12] border border-gray-800 px-6 py-3 flex flex-col rounded-md gap-3">
                                 {menu.map((item) => (

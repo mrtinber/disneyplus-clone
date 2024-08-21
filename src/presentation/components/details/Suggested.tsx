@@ -57,7 +57,7 @@ export const Suggested = ({
     }
 
     return (
-        <div className="flex flex-wrap justify-between gap-6 md:gap-10 pt-6 pb-16 md:py-6 px-6 overflow-y-auto max-h-screen scrollbar-hide scroll-smooth">
+        <div className="flex flex-wrap justify-start gap-6 md:gap-10 pt-6 pb-16 md:py-6 px-6 overflow-y-auto max-h-screen scrollbar-hide scroll-smooth">
             {recommendations.map((item, index) => (
                 <SuggestionCard key={index} media={item} />
             ))}
