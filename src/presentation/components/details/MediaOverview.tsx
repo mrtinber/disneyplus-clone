@@ -18,7 +18,7 @@ export const MediaOverview = ({ details }: { details: Series | Movie }) => {
             </h2>
             <div className="flex flex-col gap-4">
                 <div>
-                    <div className="flex gap-2 text-white items-center">
+                    <div className="hidden md:flex gap-2 text-white items-center">
                         {isSeries(details)
                             ? details.number_of_seasons === 1
                                 ? `${details.first_air_date.substring(0, 4)}`
@@ -60,7 +60,7 @@ export const MediaOverview = ({ details }: { details: Series | Movie }) => {
                         }
                     />
                 </div>
-                <p className="text-white font-light">{details.overview}</p>
+                <p className="text-white font-light text-justify">{details.overview}</p>
             </div>
         </>
     );

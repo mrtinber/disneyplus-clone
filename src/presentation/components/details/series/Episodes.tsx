@@ -55,7 +55,7 @@ export const Episodes = ({ seriesId }: { seriesId: string | undefined }) => {
     }
 
     return (
-        <div className="flex flex-col gap-6 py-6 overflow-y-auto max-h-screen scrollbar-hide scroll-smooth">
+        <div className="flex flex-col gap-6 py-6 px-2 md:px-0 overflow-y-auto max-h-screen scrollbar-hide scroll-smooth">
             <SeasonSelector
                 numberOfSeasons={numberOfSeasons}
                 selectedSeason={selectedSeason}

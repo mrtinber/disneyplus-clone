@@ -74,7 +74,7 @@ export const Slider = () => {
                 />
 
                 <div
-                    className="flex overflow-x-auto overflow-y-visible w-full px-16 pt-4 pb-8 scrollbar-hide scroll-smooth"
+                    className="flex overflow-x-auto overflow-y-visible w-full px-4 md:px-16 pt-4 pb-8 scrollbar-hide scroll-smooth"
                     ref={imageSliderRef}
                 >
                     {movieList.map((item, index) => (
@@ -99,7 +99,7 @@ export const Slider = () => {
                     ))}
                 </div>
 
-                <div className="flex items-center gap-2 absolute bottom-12 right-24">
+                <div className="hidden md:flex items-center gap-2 absolute bottom-12 right-24">
                     {movieList.map((_, index) => (
                         <div
                             key={index}

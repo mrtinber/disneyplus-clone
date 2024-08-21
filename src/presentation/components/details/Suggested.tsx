@@ -4,10 +4,10 @@ import {
     getMovieRecommendations,
     getSeriesRecommendations,
 } from "../../../infrastructure/services/ApiCall";
-import { MovieCard } from "../shared/MovieCard";
 import { Loader } from "../shared/Loader";
 import { Movie } from "../../../domain/types/movie";
 import { isSeries } from "../../../infrastructure/utils/typeGuards";
+import { SuggestionCard } from "./SuggestionCard";
 
 interface RecommendationsResponse<T> {
     results: T[];
@@ -57,9 +57,9 @@ export const Suggested = ({
     }
 
     return (
-        <div className="flex flex-wrap justify-between gap-6 py-6 px-6 overflow-y-auto max-h-screen scrollbar-hide scroll-smooth">
+        <div className="flex flex-wrap justify-between gap-6 md:gap-10 pt-6 pb-16 md:py-6 px-6 overflow-y-auto max-h-screen scrollbar-hide scroll-smooth">
             {recommendations.map((item, index) => (
-                <MovieCard key={index} media={item} />
+                <SuggestionCard key={index} media={item} />
             ))}
         </div>
     );

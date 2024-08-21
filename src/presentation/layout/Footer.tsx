@@ -17,7 +17,7 @@ export const Footer = () => {
                 />
             </div>
             <div className="flex flex-col gap-4 items-center">
-                <p className="text-white font-light text-xs text-center w-[700px]">
+                <p className="text-white font-light text-xs text-center w-2/3 md:w-[700px]">
                     This is a fan-made project and is not affiliated with Disney,
                     The Movie Database (TMDb), or any of their affiliates. All
                     logos, trademarks, and images are property of their respective

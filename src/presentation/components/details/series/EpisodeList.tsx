@@ -14,7 +14,7 @@ export const EpisodeList = ({ episodesList }: { episodesList: Episode[] }) => {
     return (
         <div className="flex flex-col gap-4">
             {episodesList.map((item, index) => (
-                <div key={index} className="flex gap-4 w-full h-36">
+                <div key={index} className="flex justify-between md:justify-normal gap-4 w-full h-36">
                     {/* {!isThumbnailLoaded && (
                             <div className="w-64 text-white text-center content-center bg-slate-700 rounded-md">
                             </div>
@@ -23,13 +23,13 @@ export const EpisodeList = ({ episodesList }: { episodesList: Episode[] }) => {
                         src={`${PICTURE_BASE_URL}${item.still_path}`}
                         alt={item.name}
                         onLoad={() => handleThumbnailLoading(index)}
-                        className={`w-64 rounded-md object-cover ${
+                        className={`w-40 md:w-64 rounded-md object-cover ${
                             loadedImages[index] ? "opacity-100" : "opacity-0"
                         } duration-500 ease-in-out cursor-pointer`}
                     />
                     <div
                         className="text-white flex flex-col gap-4 py-1"
-                        style={{ width: `calc(100% - 256px)` }}
+                        // style={{ width: `calc(100% - 256px)` }}
                     >
                         <div className="flex gap-3">
                             <p className="font-medium">

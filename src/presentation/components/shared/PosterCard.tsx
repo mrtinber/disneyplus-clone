@@ -19,7 +19,7 @@ export const PosterCard: React.FC<{ media: Movie | Series }> = ({ media }) => {
             className="shrink-0"
         >
             {!isLoaded && (
-                <div className="text-white text-center content-center bg-slate-700 rounded-lg cursor-pointer w-[110px] h-[300px] md:w-[200px] hover:border-[3px] border-gray-300 hover:scale-110 shadow-lg shadow-black transition-all">
+                <div className="text-white text-center content-center bg-slate-700 rounded-lg cursor-pointer w-[110px] h-[165px] md:h-[300px] md:w-[200px] hover:border-[3px] border-gray-300 hover:scale-110 shadow-lg shadow-black transition-all">
                     {media.name || media.title}
                 </div>
             )}

@@ -59,10 +59,7 @@ export const Header = () => {
                             />
                         ))}
                     </div>
-                    <div
-                        className="hidden sm:flex lg:hidden items-center gap-4"
-                        onClick={toggleMenu}
-                    >
+                    <div className="hidden sm:flex lg:hidden items-center gap-4">
                         {menu.map(
                             (item, index) =>
                                 index < 3 && (
@@ -76,7 +73,7 @@ export const Header = () => {
                                     </div>
                                 )
                         )}
-                        <div className="relative">
+                        <div className="relative" onClick={toggleMenu}>
                             <NavItem name="" Icon={HiDotsVertical} />
                             {menuOpen && (
                                 <div className="absolute mt-3 z-[100] bg-[#060a12] border border-gray-800 px-6 py-3 flex flex-col rounded-md gap-3">

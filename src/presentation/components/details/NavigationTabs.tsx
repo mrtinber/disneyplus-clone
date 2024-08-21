@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { DetailsTab } from "./series/DetailsTab";
+import { DetailsTab } from "./DetailsTab";
 import { Episodes } from "./series/Episodes";
 import { Suggested } from "./Suggested";
 import { Series } from "../../../domain/types/series";
 import { isSeries } from "../../../infrastructure/utils/typeGuards";
-import { MovieDetails } from "./movies/MovieDetails";
 import { Movie } from "../../../domain/types/movie";
 
 type TabButtons = "EPISODES" | "SUGGESTED" | "DETAILS" | "EXTRAS";
@@ -88,10 +87,8 @@ export const NavigationTabs = ({
 
             {activeButton === "EPISODES" ? (
                 <Episodes seriesId={id} />
-            ) : activeButton === "DETAILS" && isSeries(details) ? (
-                <DetailsTab seriesId={id} />
-            ) : activeButton === "DETAILS" && !isSeries(details) ? (
-                <MovieDetails movieId={id} details={details} />
+            ) : activeButton === "DETAILS" ? (
+                <DetailsTab id={id}  details={details}/>
             ) : activeButton === "SUGGESTED" ? (
                 <Suggested id={id} details={details} />
             ) : (
