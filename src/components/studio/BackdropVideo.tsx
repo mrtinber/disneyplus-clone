@@ -1,12 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export const BackdropVideo = ({
-    videoRef,
-    backdropVideo,
-}: {
-    videoRef: React.RefObject<HTMLVideoElement>;
-    backdropVideo: string;
-}) => {
+export const BackdropVideo = ({ backdropVideo }: { backdropVideo: string }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
     useEffect(() => {
         const video = videoRef.current;
         if (video) {

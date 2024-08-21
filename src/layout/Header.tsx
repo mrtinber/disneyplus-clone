@@ -5,7 +5,7 @@ import { FaBars } from "react-icons/fa6";
 import { PiTelevisionFill } from "react-icons/pi";
 import { HiDotsVertical, HiHome } from "react-icons/hi";
 import { CgSearch } from "react-icons/cg";
-import { NavItem } from "../components/ui/NavItem";
+import { NavItem } from "../components/shared/NavItem";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -47,7 +47,7 @@ export const Header = () => {
         <>
             <div className="flex items-center justify-between p-4 bg-gradient-to-b from-black to-transparent z-[3000] fixed top-0 w-full">
                 <div className="flex items-center gap-4">
-                    <Link to={''}>
+                    <Link to={""}>
                         <DisneyPlusLogo height={40} />
                     </Link>
                     <div className="items-center gap-6 hidden lg:flex">

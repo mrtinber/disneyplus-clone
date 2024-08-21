@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getMovieRecommendations } from "../../services/ApiCall";
-import { MovieCard } from "../ui/MovieCard";
+import { MovieCard } from "../shared/MovieCard";
 import { Movie } from "../../types/movie";
-import { Loader } from "../ui/Loader";
+import { Loader } from "../shared/Loader";
 
 export const MovieSuggested = ({
     seriesId,
@@ -18,7 +18,7 @@ export const MovieSuggested = ({
 
     const getRecommendations = async () => {
         if (seriesId) {
-            setIsLoading(true)
+            setIsLoading(true);
             try {
                 const data = await getMovieRecommendations(parseInt(seriesId));
                 setRecommendations(data.results);
@@ -26,7 +26,7 @@ export const MovieSuggested = ({
             } catch (error) {
                 console.error("Failed to retrieve recommendations.");
             } finally {
-                setIsLoading(false)
+                setIsLoading(false);
             }
         }
     };

@@ -1,7 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Header } from "./layout/Header";
-import { Homepage } from "./pages/Homepage";
-import { Studio } from "./pages/Studio";
+import { HomePage } from "./pages/HomePage";
+import { StudioPage } from "./pages/StudioPage";
 import { MoviePage } from "./pages/MoviePage";
 import { SeriesPage } from "./pages/SeriesPage";
 import { ErrorPage } from "./pages/ErrorPage";
@@ -23,11 +23,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <Homepage />,
+                element: <HomePage />,
             },
             {
                 path: "studio/:companyId",
-                element: <Studio />,
+                element: <StudioPage />,
             },
             {
                 path: "movie/details/:id",

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Episode } from "../../types/episode";
 import { getSeriesDetails, getSeriesEpisodes } from "../../services/ApiCall";
-import { Loader } from "../ui/Loader";
+import { Loader } from "../shared/Loader";
 import { SeasonSelector } from "./SeasonSelector";
 import { EpisodeList } from "./EpisodeList";
 

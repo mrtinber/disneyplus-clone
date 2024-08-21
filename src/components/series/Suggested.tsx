@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Series } from "../../types/series";
 import { getSeriesRecommendations } from "../../services/ApiCall";
-import { MovieCard } from "../ui/MovieCard";
-import { Loader } from "../ui/Loader";
+import { MovieCard } from "../shared/MovieCard";
+import { Loader } from "../shared/Loader";
 
 export const Suggested = ({ seriesId }: { seriesId: string | undefined }) => {
     const [recommendations, setRecommendations] = useState<Series[]>([]);
@@ -14,7 +14,7 @@ export const Suggested = ({ seriesId }: { seriesId: string | undefined }) => {
 
     const getRecommendations = async () => {
         if (seriesId) {
-            setIsLoading(true)
+            setIsLoading(true);
             try {
                 const data = await getSeriesRecommendations(parseInt(seriesId));
                 setRecommendations(data.results);
@@ -22,7 +22,7 @@ export const Suggested = ({ seriesId }: { seriesId: string | undefined }) => {
             } catch (error) {
                 console.error("Failed to retrieve recommendations.");
             } finally {
-                setIsLoading(false)
+                setIsLoading(false);
             }
         }
     };

@@ -7,7 +7,7 @@ import {
 } from "../../services/ApiCall";
 import { Credits } from "../../types/Credits";
 
-export const SeriesDetails = ({
+export const DetailsTab = ({
     seriesId,
 }: {
     seriesId: string | undefined;
