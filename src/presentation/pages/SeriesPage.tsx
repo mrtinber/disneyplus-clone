@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getSeriesDetails } from "../../infrastructure/services/ApiCall";
+import { getSeriesDetails } from "../../infrastructure/services/SeriesService";
 import { Series } from "../../domain/types/series";
 import { Loader } from "../components/shared/Loader";
 import { MediaOverview } from "../components/details/MediaOverview";

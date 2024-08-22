@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { Series } from "../../../domain/types/series";
-import {
-    getMovieCredits,
-    getSeriesCredits,
-} from "../../../infrastructure/services/ApiCall";
+import { getMovieCredits } from "../../../infrastructure/services/MovieService";
 import { Credits } from "../../../domain/types/credits";
 import { Movie } from "../../../domain/types/movie";
 import { isSeries } from "../../../infrastructure/utils/typeGuards";
 import { SeriesDetails } from "./series/SeriesDetails";
 import { MovieDetails } from "./movies/MovieDetails";
+import { getSeriesCredits } from "../../../infrastructure/services/SeriesService";
 
 export const DetailsTab = ({
     id,

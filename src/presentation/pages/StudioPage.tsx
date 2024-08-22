@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { Movie } from "../../domain/types/movie";
-import {
-    getMoviesByCompany,
-    getSeries,
-} from "../../infrastructure/services/ApiCall";
+import { getMoviesByCompany } from "../../infrastructure/services/MovieService";
 import { useParams } from "react-router-dom";
 import { Loader } from "../components/shared/Loader";
 import { PosterCarrousel } from "../components/shared/PosterCarrousel";
 import { BackdropVideo } from "../components/studio/BackdropVideo";
 import { getConfigValues } from "../components/studio/StudioConfig";
+import { getSeries } from "../../infrastructure/services/SeriesService";
 
 export const StudioPage = () => {
     const { companyId } = useParams<{ companyId: string }>();

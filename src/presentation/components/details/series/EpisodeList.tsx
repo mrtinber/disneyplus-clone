@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PICTURE_BASE_URL } from "../../../../infrastructure/services/ApiCall";
+import { PICTURE_BASE_URL } from "../../../../infrastructure/services/constants";
 import { Episode } from "../../../../domain/types/episode";
 
 export const EpisodeList = ({ episodesList }: { episodesList: Episode[] }) => {
@@ -14,7 +14,10 @@ export const EpisodeList = ({ episodesList }: { episodesList: Episode[] }) => {
     return (
         <div className="flex flex-col gap-4">
             {episodesList.map((item, index) => (
-                <div key={index} className="flex justify-between md:justify-normal gap-4 w-full h-36">
+                <div
+                    key={index}
+                    className="flex justify-between md:justify-normal gap-4 w-full h-36"
+                >
                     {/* {!isThumbnailLoaded && (
                             <div className="w-64 text-white text-center content-center bg-slate-700 rounded-md">
                             </div>

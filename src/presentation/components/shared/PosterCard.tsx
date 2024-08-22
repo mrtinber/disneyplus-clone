@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PICTURE_BASE_URL } from "../../../infrastructure/services/ApiCall";
+import { PICTURE_BASE_URL } from "../../../infrastructure/services/constants";
 import { Movie } from "../../../domain/types/movie";
 import { useState } from "react";
 import { Series } from "../../../domain/types/series";

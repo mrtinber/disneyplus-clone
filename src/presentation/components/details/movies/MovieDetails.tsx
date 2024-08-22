@@ -1,4 +1,4 @@
-import { PICTURE_BASE_URL } from "../../../../infrastructure/services/ApiCall";
+import { PICTURE_BASE_URL } from "../../../../infrastructure/services/constants";
 import { Movie } from "../../../../domain/types/movie";
 
 export const MovieDetails = ({ details }: { details: Movie }) => {

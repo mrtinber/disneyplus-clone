@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import { PICTURE_BASE_URL } from "../../../infrastructure/services/ApiCall";
+import { PICTURE_BASE_URL } from "../../../infrastructure/services/constants";
 import { Movie } from "../../../domain/types/movie";
 import { useState } from "react";
 import { Series } from "../../../domain/types/series";
 
-export const SuggestionCard: React.FC<{ media: Movie | Series }> = ({ media }) => {
+export const SuggestionCard: React.FC<{ media: Movie | Series }> = ({
+    media,
+}) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const handleImageLoad = () => {

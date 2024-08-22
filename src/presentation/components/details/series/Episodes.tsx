@@ -3,7 +3,7 @@ import { Episode } from "../../../../domain/types/episode";
 import {
     getSeriesDetails,
     getSeriesEpisodes,
-} from "../../../../infrastructure/services/ApiCall";
+} from "../../../../infrastructure/services/SeriesService";
 import { Loader } from "../../shared/Loader";
 import { SeasonSelector } from "./SeasonSelector";
 import { EpisodeList } from "./EpisodeList";

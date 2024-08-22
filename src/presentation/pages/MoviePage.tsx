@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getMovieDetails } from "../../infrastructure/services/ApiCall";
+import { getMovieDetails } from "../../infrastructure/services/MovieService";
 import { Movie } from "../../domain/types/movie";
 import { Loader } from "../components/shared/Loader";
 import { BackdropImage } from "../components/details/BackdropImage";

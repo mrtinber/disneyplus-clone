@@ -1,7 +1,7 @@
 import { Series } from "../../../../domain/types/series";
-import { PICTURE_BASE_URL } from "../../../../infrastructure/services/ApiCall";
+import { PICTURE_BASE_URL } from "../../../../infrastructure/services/constants";
 
-export const SeriesDetails = ({details} :  {details: Series}) => {
+export const SeriesDetails = ({ details }: { details: Series }) => {
     return (
         <>
             <div className="w-full md:w-3/5 flex flex-col gap-2">

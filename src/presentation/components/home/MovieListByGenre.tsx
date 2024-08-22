@@ -3,7 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { PosterCard } from "../shared/PosterCard";
 import { MovieCard } from "../shared/MovieCard";
 import { Movie } from "../../../domain/types/movie";
-import { getMoviesByGenre } from "../../../infrastructure/services/ApiCall";
+import { getMoviesByGenre } from "../../../infrastructure/services/MovieService";
 
 const widthSlider = window.innerWidth;
 

@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { Series } from "../../../domain/types/series";
-import {
-    getMovieRecommendations,
-    getSeriesRecommendations,
-} from "../../../infrastructure/services/ApiCall";
+import { getMovieRecommendations } from "../../../infrastructure/services/MovieService";
 import { Loader } from "../shared/Loader";
 import { Movie } from "../../../domain/types/movie";
 import { isSeries } from "../../../infrastructure/utils/typeGuards";
 import { SuggestionCard } from "./SuggestionCard";
+import { getSeriesRecommendations } from "../../../infrastructure/services/SeriesService";
 
 interface RecommendationsResponse<T> {
     results: T[];

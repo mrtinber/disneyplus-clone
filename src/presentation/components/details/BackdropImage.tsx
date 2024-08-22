@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Series } from "../../../domain/types/series";
 import { Movie } from "../../../domain/types/movie";
-import { PICTURE_BASE_URL } from "../../../infrastructure/services/ApiCall";
+import { PICTURE_BASE_URL } from "../../../infrastructure/services/constants";
 
 export const BackdropImage = ({ details }: { details: Series | Movie }) => {
     const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
