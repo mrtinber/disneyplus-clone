@@ -17,30 +17,30 @@ const Layout = () => (
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/disneyplus-clone/",
         element: <Layout />,
         errorElement: <ErrorPage />,
         children: [
             {
-                path: "",
+                path: "/disneyplus-clone/",
                 element: <HomePage />,
             },
             {
-                path: "studio/:companyId",
+                path: "/disneyplus-clone/studio/:companyId",
                 element: <StudioPage />,
             },
             {
-                path: "movie/details/:id",
+                path: "/disneyplus-clone/movie/details/:id",
                 element: <MoviePage />,
             },
             {
-                path: "tv/details/:id",
+                path: "/disneyplus-clone/tv/details/:id",
                 element: <SeriesPage />,
             },
         ],
     },
     {
-        path: "error",
+        path: "/disneyplus-clone/error",
         element: <ErrorPage />,
     },
 ]);

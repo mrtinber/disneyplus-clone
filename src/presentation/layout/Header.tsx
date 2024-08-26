@@ -47,7 +47,7 @@ export const Header = () => {
         <>
             <div className="flex items-center justify-between p-4 bg-gradient-to-b from-black to-transparent z-[3000] fixed top-0 w-full">
                 <div className="flex items-center gap-4">
-                    <Link to={""}>
+                    <Link to={"/disneyplus-clone/"}>
                         <DisneyPlusLogo height={40} />
                     </Link>
                     <div className="items-center gap-6 hidden lg:flex">
