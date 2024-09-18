@@ -42,15 +42,16 @@ You should be able to view the project at http://localhost:5173
 
 ## Technologies used
 
-* [![React][React.js]]
-* [![React Router][ReactRouter]]
-* [![TailwindCSS][TailwindCSS]]
+![React][React.js]
+![React Router][ReactRouter]
+![TailwindCSS][TailwindCSS]
 
 ## Author
 
-Kevin Bertin
+Kevin Bertin :
 
--   [GitHub](https://github.com/mrtinber)
+[![GitHub][GitHub]][GitHub-URL]
+[![LinkedIn][LinkedIn]][LinkedIn-URL]
 
 ## Contributing
 
@@ -59,11 +60,13 @@ to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-GitHub Repository Link: [https://github.com/mrtinber/disneyplus-clone](https://github.com/mrtinber/disneyplus-clone)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactRouter]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 [TailwindCSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[GitHub]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
+[GitHub-URL]: https://github.com/mrtinber
+[LinkedIn]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
+[LinkedIn-URL]: https://www.linkedin.com/in/kevin-bertin/
